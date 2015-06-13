@@ -1,1 +1,1 @@
-# Proyecyo Hosting
+# Proyecto Hosting
