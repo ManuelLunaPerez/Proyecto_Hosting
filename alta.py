@@ -61,4 +61,21 @@ ficheroconf = open("/etc/bind/named.conf.local","a")
 ficheroconf.write(introducir)
 ficheroconf.close()
 
+#Creación del fichero de la zona y configuración
+
+os.system("touch /var/cache/bind/db."+dominio+"")
+plantillazonadb = open("plantillas/zonas")
+contenidozonas = plantillazonadb.read()
+plantillazonadb.close()
+ficherozona = open("/var/cache/bind/db."+dominio+"","w")
+contenidozonas = contenidozonas.replace('..dom..',dominio)
+ficherozona.write(contenidozonas)
+ficherozona.close()
+
+#Reiniciamos el servicio bind9
+os.system("service bind9 restart>/dev/null")
+
+
+
+
 	

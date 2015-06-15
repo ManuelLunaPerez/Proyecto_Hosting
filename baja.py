@@ -26,6 +26,24 @@ elif  exisusuario == '1' and exisdominio == '0':
 else:
 	print "El usuario y el dominio introducidos no existen";
 	exit()
-
-os.system("a2dissite " +dominio+">/dev/null")
+	
+#Desactivamos el sitio
+os.system ("cd /etc/apache2/sites-available/")
+os.system("a2dissite "+dominio+">/dev/null")
+#Borramos el sitio
 os.system("rm /etc/apache2/sites-available/"+dominio+"")
+#Borramos el fichero de zona
+os.system("rm /var/cache/bind/db."+dominio+"")
+
+#Borramos la zona del fichero de configuración
+busqueda = commands.getoutput("grep -A1 "+dominio+" /etc/bind/named.conf.local")
+ficheroconf = open("/etc/bind/named.conf.local",'r')   
+contenido = ficheroconf.read()   
+contenido = contenido.replace(busqueda,"")   
+ficheroconf.close() 
+modificado = open("/etc/bind/named.conf.local",'w')   
+modificado.write(contenido)
+modificado.close()
+
+os.system("service apache2 restart>/dev/null")
+os.system("service bind9 restart>/dev/null")
