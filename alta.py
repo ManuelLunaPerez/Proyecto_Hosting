@@ -10,11 +10,11 @@ dominio = sys.argv[2]
 
 
 exisusuario = commands.getoutput("if [ -d /var/www/"+usuario+" ]; then echo '1'; else echo '0'; fi")
-exisdominio = commands.getoutput("if [ -f /etc/apache2/sites-available/"+dominio+".conf ]; then echo '1'; else echo '0'; fi")
+exisdominio = commands.getoutput("if [ -f /etc/apache2/sites-available/"+dominio+" ]; then echo '1'; else echo '0'; fi")
 
 if exisusuario == '0' and exisdominio == '0':
 	os.system("mkdir /var/www/"+usuario+"")
-	os.system("touch /etc/apache2/sites-available/"+dominio+".conf")
+	os.system("touch /etc/apache2/sites-available/"+dominio+"")
 	print "Usuario y dominio creados satisfactoriamente";
 	
 elif  exisusuario == '1' and exisdominio == '0':
@@ -43,7 +43,7 @@ creacionindex.close()
 plantillavh = open("plantillas/virtualhost","r")
 contenido2 = plantillavh.read()
 plantillavh.close()
-ficherovh = open("/etc/apache2/sites-available/"+dominio+".conf","w")
+ficherovh = open("/etc/apache2/sites-available/"+dominio+"","w")
 contenido2 = contenido2.replace('..dom..',dominio)
 contenido2 = contenido2.replace('..usuario..',usuario)
 ficherovh.write(contenido2)

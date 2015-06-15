@@ -9,7 +9,7 @@ usuario = sys.argv[1]
 dominio = sys.argv[2]
 
 exisusuario= commands.getoutput("if [ -d /var/www/"+usuario+" ]; then echo '1'; else echo '0'; fi")
-exisdominio = commands.getoutput("if [ -f /etc/apache2/sites-available/"+dominio+".conf ]; then echo '1'; else echo '0'; fi")
+exisdominio = commands.getoutput("if [ -f /etc/apache2/sites-available/"+dominio+" ]; then echo '1'; else echo '0'; fi")
 
 if exisusuario == '1' and exisdominio == '1':
 	os.system("rm -r /var/www/"+usuario+"")
@@ -27,5 +27,5 @@ else:
 	print "El usuario y el dominio introducidos no existen";
 	exit()
 
-os.system("a2dissite " +dominio+".conf>/dev/null")
-os.system("rm /etc/apache2/sites-available/"+dominio+".conf")
+os.system("a2dissite " +dominio+">/dev/null")
+os.system("rm /etc/apache2/sites-available/"+dominio+"")
