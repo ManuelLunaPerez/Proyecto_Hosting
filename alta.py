@@ -8,6 +8,7 @@ import MySQLdb
 usuario = sys.argv[1]
 dominio = sys.argv[2]
 
+
 exisusuario = commands.getoutput("if [ -d /var/www/"+usuario+" ]; then echo '1'; else echo '0'; fi")
 exisdominio = commands.getoutput("if [ -f /etc/apache2/sites-available/"+dominio+".conf ]; then echo '1'; else echo '0'; fi")
 
