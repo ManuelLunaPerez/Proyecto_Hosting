@@ -1,0 +1,14 @@
+$ORIGIN ..dom..
+$TTL 86400 ; 1 day
+@       IN      SOA     servicios-hosting...dom...     admin...dom... (
+        1 ; serial
+        21600 ; refresh (6 hours)
+        3600 ; retry (1 hour)
+        604800 ; expire (1 week)
+        21600 ; minimum (6 hours)
+)
+@					IN      NS      servicios-hosting...dom...
+servicios-hosting	IN      A       10.0.0.52
+www					CNAME	servicios-hosting
+ftp					CNAME	servicios-hosting
+mysql				CNAME	servicios-hosting
