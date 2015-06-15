@@ -71,6 +71,8 @@ ficherozona = open("/var/cache/bind/db."+dominio+"","w")
 contenidozonas = contenidozonas.replace('..dom..',dominio)
 ficherozona.write(contenidozonas)
 ficherozona.close()
+os.system("chown bind:bind /var/cache/bind/db."+dominio+"")
+os.system("chmod 660 /var/cache/bind/db."+dominio+"")
 
 #Reiniciamos el servicio bind9
 os.system("service bind9 restart>/dev/null")
