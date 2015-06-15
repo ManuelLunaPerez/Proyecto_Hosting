@@ -1,6 +1,6 @@
 <VirtualHost *:80>
-        ServerAdmin webmaster@..dom..
-        ServerName  www...dom..
+        ServerAdmin webmaster@..dom...com
+        ServerName  www...dom...com
         DocumentRoot /var/www/..usuario..
         <Directory />
 		Options FollowSymLinks
