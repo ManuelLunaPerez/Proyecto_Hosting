@@ -20,7 +20,7 @@ elif  exisdirectorio == '1' and exisdominio == '0':
 	print "El usuario introducido ya existe";
 	
 elif  exisdirectorio == '0' and exisdominio == '1':
-	print "El dominio introducido ya está siendo utilizado";
+	print "El dominio introducido ya está siendo utilizado por otro usuario";
 	
 else:
 	print "El usuario y el dominio introducido ya están siendo utilizados";
