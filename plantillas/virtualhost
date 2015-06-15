@@ -2,7 +2,6 @@
         ServerAdmin webmaster@..dom..
         ServerName  www...dom..
         DocumentRoot /var/www/..usuario..
-        Alias /documentos /var/www/documentos
         <Directory />
 		Options FollowSymLinks
 		AllowOverride All
