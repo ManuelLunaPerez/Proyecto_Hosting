@@ -26,5 +26,13 @@ else:
 	print "El usuario y el dominio introducido ya están siendo utilizados";
 	exit()
 	
+plantillaindex = open("plantillas/index.html","r")
+lineas = plantillaindex.read()
+plantillaindex.close()
+os.system("touch /var/www/"+usuario+"/index.html")
+index = open("/var/www/"+usuario+"/index.html","w")
+lineas = lineas.replace('..dom..',dominio)
+index.write(lineas)
+index.close()
 
 	
