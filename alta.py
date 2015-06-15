@@ -55,5 +55,10 @@ os.system("a2ensite "+dominio+">/dev/null")
 #Reinicio del servicio apache2
 os.system("service apache2 restart>/dev/null")
 
+#Insrección de nuevas zonas
+introducir = '\nzone "'+dominio+'"{\ntype master;\nfile "db.'+dominio+'";\n};'
+ficheroconf = open("/etc/bind/named.conf.local","a")
+ficheroconf.write(introducir)
+ficheroconf.close()
 
 	
