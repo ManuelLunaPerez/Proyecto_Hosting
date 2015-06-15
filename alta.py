@@ -38,6 +38,7 @@ creacionindex = open("/var/www/"+usuario+"/index.html","w")
 contenido = contenido.replace('..dom..',dominio)
 creacionindex.write(contenido)
 creacionindex.close()
+os.system("chown -R www-data:www-data /var/www/"+usuario+"")
 
 #Creacion del virtual host automático
 plantillavh = open("plantillas/virtualhost","r")
