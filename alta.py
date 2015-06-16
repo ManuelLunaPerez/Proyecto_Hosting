@@ -111,7 +111,7 @@ passwordftp =id_generator()
 
 if maxuid == None:
 	uidnuevo=str("4001")
-	nuevousuario = "insert into usuarios values('"+usuario+"','"+passwordftp+"','"+uidnuevo+"','"+uidnuevo+"','/var/www/"+usuario+"','/bin/false1','1','"+dominio+"');"	
+	nuevousuario = "insert into usuarios values('"+usuario+"',password('"+passwordftp+"'),'"+uidnuevo+"','"+uidnuevo+"','/var/www/"+usuario+"','/bin/false1','1','"+dominio+"');"	
 	cursor.execute(nuevousuario)
 	conexion.commit()
 	os.system("chown -R "+uidnuevo+":"+uidnuevo+" /var/www/"+usuario+"")
@@ -120,7 +120,7 @@ if maxuid == None:
 else:
 	uidnuevo=int(maxuid)+1
 	uidnuevo=str(uidnuevo)
-	nuevousuario = "insert into usuarios values('"+usuario+"','"+passwordftp+"','"+uidnuevo+"','"+uidnuevo+"','/var/www/"+usuario+"','/bin/false1','1','"+dominio+"');"
+	nuevousuario = "insert into usuarios values('"+usuario+"',password('"+passwordftp+"'),'"+uidnuevo+"','"+uidnuevo+"','/var/www/"+usuario+"','/bin/false1','1','"+dominio+"');"
 	cursor.execute(nuevousuario)
 	conexion.commit()
 	os.system("chown -R "+uidnuevo+":"+uidnuevo+" /var/www/"+usuario+"")

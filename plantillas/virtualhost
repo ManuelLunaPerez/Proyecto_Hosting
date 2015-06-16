@@ -3,8 +3,7 @@
         ServerName www...dom..
         DocumentRoot /var/www/..usuario../
         <Directory /var/www/..usuario..>
-                Options Indexes FollowSymLinks MultiViews
-                AllowOverride None
+                Options Indexes SymLinksIfOwnerMatch
                 Order allow,deny
                 allow from all
         </Directory>

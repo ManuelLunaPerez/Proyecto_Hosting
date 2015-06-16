@@ -34,7 +34,7 @@ if exisusuario == '1':
 	elif opcion == '-ftp':
 		conexion = MySQLdb.connect(host="localhost", user="administrador", passwd="admin", db="ftp")
 		cursor=conexion.cursor()
-		sql="update usuarios set password ='"+newpass+"' where username='"+usuario+"';"
+		sql="update usuarios set password =password('"+newpass+"') where username='"+usuario+"';"
 		cursor.execute(sql)
 		conexion.commit()
 		conexion.close() 
