@@ -5,7 +5,6 @@ import string
 import commands
 import random
 import MySQLdb
-import base64
 usuario = sys.argv[1]
 dominio = sys.argv[2]
 
