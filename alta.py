@@ -5,7 +5,7 @@ import string
 import commands
 import random
 import MySQLdb
-
+import base64
 usuario = sys.argv[1]
 dominio = sys.argv[2]
 
@@ -100,11 +100,14 @@ cursor.execute(sql)
 resultado=cursor.fetchall() 
 for i in resultado:
 	maxuid=i[0]
- 
+
+#Generador de contraseñas 
 def id_generator(size=10, chars=string.ascii_uppercase + string.digits):
 
     return ''.join(random.choice(chars) for _ in range(size))
 
+
+#Creamos una variable para la contraseña ftp
 passwordftp =id_generator()
 
 if maxuid == None:
@@ -118,20 +121,19 @@ if maxuid == None:
 else:
 	uidnuevo=int(maxuid)+1
 	uidnuevo=str(uidnuevo)
-	nuevousuario = "insert into usuario values('"+usuario+"','"+passwordftp+"','"+uidnuevo+"','"+uidnuevo+"','/var/www/"+usuario+"','/bin/false1','1','"+dominio+"');"
+	nuevousuario = "insert into usuarios values('"+usuario+"','"+passwordftp+"','"+uidnuevo+"','"+uidnuevo+"','/var/www/"+usuario+"','/bin/false1','1','"+dominio+"');"
 	cursor.execute(nuevousuario)
 	conexion.commit()
 	os.system("chown -R "+uidnuevo+":"+uidnuevo+" /var/www/"+usuario+"")
 	conexion.close()
 
-
-
+#Creamos una variable para la contraseña de mysql
 passwordmysql=id_generator()
-
-
+#Creamos la base de datos y damos permisos al usuario sobre la base de datos
 os.system("mysqladmin -u root -proot create my"+usuario+"")
 os.system("mysql -u root -proot -e \"grant all on my"+usuario+".* to \'my"+usuario+"\'@\'localhost\' identified by \'"+passwordmysql+"\';\"")
 
+#Información
 print "Usuario y dominio creados correctamente"
 print "---------------------------------------"
 print "Datos de acceso para FTP"
