@@ -2,10 +2,6 @@
         ServerAdmin webmaster@..dom..
         ServerName www...dom..
         DocumentRoot /var/www/..usuario../
-        <Directory />
-                Options FollowSymLinks
-                AllowOverride None
-        </Directory>
         <Directory /var/www/..usuario..>
                 Options Indexes FollowSymLinks MultiViews
                 AllowOverride None
