@@ -31,6 +31,7 @@ os.system ("cd /etc/apache2/sites-available/")
 os.system("a2dissite "+dominio+">/dev/null")
 #Borramos el sitio
 os.system("rm /etc/apache2/sites-available/"+dominio+"")
+os.system("rm /etc/apache2/sites-available/mysql-"+dominio+"")
 #Borramos el fichero de zona
 os.system("rm /var/cache/bind/db."+dominio+"")
 
