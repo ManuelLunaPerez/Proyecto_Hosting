@@ -29,6 +29,8 @@ os.system("rm -r /var/www/"+usuario+"")
 #Desactivamos el sitio
 os.system ("cd /etc/apache2/sites-available/")
 os.system("a2dissite "+dominio+">/dev/null")
+os.system("a2dissite mysql-"+dominio+">/dev/null")
+
 #Borramos el sitio
 os.system("rm /etc/apache2/sites-available/"+dominio+"")
 os.system("rm /etc/apache2/sites-available/mysql-"+dominio+"")
